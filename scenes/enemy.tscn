@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsed851ublqxl"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_c0p8u"]
+[ext_resource type="Texture2D" uid="uid://drscfbrbpamtl" path="res://assets/Enemy.png" id="1_qcf07"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_64dsl"]
+radius = 135.059
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5fqbl"]
+properties/0/path = NodePath("Hitbox:monitorable")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Health:value")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Health:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("CollisionShape2D:disabled")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_c0p8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -70)
+texture = ExtResource("1_qcf07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_64dsl")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+light_mask = 2
+visibility_layer = 2
+polygon = PackedVector2Array(79, 129, 116, 98, 140, 64, 140, 11, 161, 11, 161, -43, 144, -43, 125, -75, 93, -107, 81, -107, 85, -269, -96, -269, -94, -107, -103, -107, -115, -87, -138, -54, -142, -43, -161, -43, -161, 11, -139, 11, -139, 66, -117, 98, -103, 111, -67, 131)
+
+[node name="Health" type="ProgressBar" parent="."]
+modulate = Color(0.392157, 1, 0.219608, 1)
+self_modulate = Color(0.368627, 0.972549, 0.184314, 1)
+offset_left = -170.0
+offset_top = -397.0
+offset_right = 163.0
+offset_bottom = -307.0
+value = 100.0
+show_percentage = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5fqbl")

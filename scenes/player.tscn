@@ -1,0 +1,126 @@
+[gd_scene load_steps=7 format=3 uid="uid://jqaokdat25a"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_njwsj"]
+[ext_resource type="Texture2D" uid="uid://3uso1awpler6" path="res://assets/Ally.png" id="1_uk15r"]
+[ext_resource type="PackedScene" uid="uid://dlqf2sjcia72b" path="res://scenes/weapon.tscn" id="2_ju2ax"]
+[ext_resource type="Texture2D" uid="uid://c50rgllovqm1d" path="res://assets/SlashOne.png" id="3_tewph"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rv2q2"]
+radius = 135.059
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_kfiyb"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Weapon:rotation")
+properties/1/spawn = false
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AbilityOne2D:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("AbilityOne2D/StanceOne:monitoring")
+properties/3/spawn = false
+properties/3/replication_mode = 1
+properties/4/path = NodePath("AbilityOne2D/StanceTwo:monitoring")
+properties/4/spawn = false
+properties/4/replication_mode = 1
+properties/5/path = NodePath("AbilityOne2D/StanceThree:monitoring")
+properties/5/spawn = false
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Health:value")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Health:visible")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Sprite2D:visible")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("CollisionShape2D:disabled")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("Hitbox:monitorable")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("AbilityOne2D:rotation")
+properties/11/spawn = false
+properties/11/replication_mode = 1
+properties/12/path = NodePath("Weapon:visible")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_njwsj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -70)
+texture = ExtResource("1_uk15r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_rv2q2")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+visible = false
+light_mask = 2
+visibility_layer = 2
+polygon = PackedVector2Array(79, 129, 116, 98, 140, 64, 140, 11, 161, 11, 161, -43, 144, -43, 125, -75, 93, -107, 81, -107, 85, -269, -96, -269, -94, -107, -103, -107, -115, -87, -138, -54, -142, -43, -161, -43, -161, 11, -139, 11, -139, 66, -117, 98, -103, 111, -67, 131)
+
+[node name="Weapon" parent="." instance=ExtResource("2_ju2ax")]
+position = Vector2(-160, -20)
+scale = Vector2(0.7, 0.7)
+centered = false
+offset = Vector2(-105, -340)
+
+[node name="AbilityOne2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -45)
+scale = Vector2(2.03103, 5.94444)
+texture = ExtResource("3_tewph")
+offset = Vector2(0, -50)
+
+[node name="StanceOne" type="Area2D" parent="AbilityOne2D"]
+visible = false
+position = Vector2(-145, -10)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AbilityOne2D/StanceOne"]
+polygon = PackedVector2Array(21.2922, -18.2634, -2.12923, 2.80975, -1.70339, -5.01743, 2.55505, -16.4571, 14.9045, -35.5233, 34.9192, -53.9875, 56.2114, -66.6314, 85.1689, -77.6697, 116.255, -83.6906, 142.232, -85.4969, 171.189, -83.6906, 199.721, -78.2718, 228.253, -68.2369, 251.674, -54.5895, 268.282, -40.7415, 281.057, -24.485, 290, -6.2216, 290, 3.81324, 279.78, -2.80975, 272.115, -12.6439, 243.157, -27.6962, 211.219, -37.731, 170.338, -43.5512, 120.94, -43.5512, 82.1879, -38.9352, 53.2305, -31.7101)
+
+[node name="StanceTwo" type="Area2D" parent="AbilityOne2D"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AbilityOne2D/StanceTwo"]
+polygon = PackedVector2Array(136.384, 1.51402, 137.861, -8.07477, 129.491, -20.5234, 118.659, -31.2897, 88.625, -53.3271, 73.3618, -62.5795, 21.6639, -77.215, -30.034, -88.9907, -76.8083, -95.215, -89.1173, -95.8879, -94.041, -88.3178, -92.5639, -39.701, -62.0375, -39.701, -48.7437, -41.8879, -8.8625, -41.7197, 40.3736, -35.6636, 65.9764, -29.4393, 106.35, -18.8411)
+
+[node name="StanceThree" type="Area2D" parent="AbilityOne2D"]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AbilityOne2D/StanceThree"]
+polygon = PackedVector2Array(-60.068, -34.8225, 52.1903, -34.8225, 52.1903, -150.056, -60.5604, -150.056)
+
+[node name="Health" type="ProgressBar" parent="."]
+modulate = Color(0.392157, 1, 0.219608, 1)
+self_modulate = Color(0.368627, 0.972549, 0.184314, 1)
+offset_left = -170.0
+offset_top = -397.0
+offset_right = 163.0
+offset_bottom = -307.0
+value = 100.0
+show_percentage = false
+
+[node name="AbilityOneTime" type="Timer" parent="."]
+
+[node name="StanceTime" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="AbilityOneCD" type="Timer" parent="."]
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_kfiyb")
+
+[connection signal="body_entered" from="AbilityOne2D/StanceOne" to="." method="_on_stance_one_body_entered"]
+[connection signal="body_entered" from="AbilityOne2D/StanceTwo" to="." method="_on_stance_two_body_entered"]
+[connection signal="body_entered" from="AbilityOne2D/StanceThree" to="." method="_on_stance_three_body_entered"]
