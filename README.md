@@ -1,4 +1,4 @@
-# p2p_demo
+# Peer-to-Peer_Game_Demo
 This is a peer-to-peer multiplayer fighter game demo I created to showcase my ability to create viable software.
 The project is built on the Godot open-source game engine. Godot 4.3 would be required to run the source code in the provided state.
 
