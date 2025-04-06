@@ -2,6 +2,9 @@
 # ONLY SHARED FOR PROSPECTIVE EMPLOYERS, RECRUITERS, HR, AND OTHER APPLICABLE PERSONNEL'S VIEWING AND EVALUATION
 extends Node
 
+var ADDRESS = "localhost"
+var PORT = 135
+
 @onready var host_button = $HostButton
 @onready var join_button = $JoinButton
 
@@ -14,7 +17,7 @@ var next_enemy_id: int = 1
 
 func _on_host_button_pressed():
 	peer = ENetMultiplayerPeer.new()
-	peer.create_server(135)
+	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
 	rpc("_add_player", multiplayer.get_unique_id())
 	multiplayer.peer_connected.connect(
@@ -24,12 +27,14 @@ func _on_host_button_pressed():
 	)
 	rpc("_add_enemy", next_enemy_id)
 	next_enemy_id += 1
+	$HostButton.set_deferred("disabled", true)
 
 func _on_join_button_pressed():
 	peer = ENetMultiplayerPeer.new()
-	peer.create_client("localhost", 135)
+	peer.create_client(ADDRESS, PORT)
 	multiplayer.multiplayer_peer = peer
 	print("We were assigned ID: ", multiplayer.get_unique_id())
+	$JoinButton.set_deferred("disabled", true)
 
 @rpc("call_local")
 func _add_player(id):
