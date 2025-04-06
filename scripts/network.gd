@@ -28,6 +28,8 @@ func _on_host_button_pressed():
 	rpc("_add_enemy", next_enemy_id)
 	next_enemy_id += 1
 	$HostButton.set_deferred("disabled", true)
+	$HostButton.visible = false
+	$JoinButton.visible = false
 
 func _on_join_button_pressed():
 	peer = ENetMultiplayerPeer.new()
@@ -35,6 +37,9 @@ func _on_join_button_pressed():
 	multiplayer.multiplayer_peer = peer
 	print("We were assigned ID: ", multiplayer.get_unique_id())
 	$JoinButton.set_deferred("disabled", true)
+	$HostButton.visible = false
+	$JoinButton.visible = false
+	
 
 @rpc("call_local")
 func _add_player(id):

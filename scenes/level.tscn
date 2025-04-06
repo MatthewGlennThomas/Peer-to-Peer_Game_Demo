@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyphl0atbixj2"]
+[gd_scene load_steps=4 format=3 uid="uid://cyphl0atbixj2"]
 
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_kpbww"]
 [ext_resource type="Texture2D" uid="uid://3w1abki66s1k" path="res://assets/BackgroundGeneric.png" id="2_jq6dr"]
+
+[sub_resource type="Theme" id="Theme_ocylw"]
+default_font_size = 48
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_kpbww")
@@ -31,6 +34,14 @@ text = "Join"
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player.tscn", "res://scenes/enemy.tscn")
 spawn_path = NodePath("..")
+
+[node name="KeybindInfo" type="TextEdit" parent="."]
+offset_left = 544.0
+offset_top = 882.0
+offset_right = 1412.0
+offset_bottom = 956.0
+theme = SubResource("Theme_ocylw")
+text = "Press Q to Slash. Right Click to Move."
 
 [connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]
