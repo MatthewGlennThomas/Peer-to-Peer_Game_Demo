@@ -4,6 +4,8 @@ All rights reserved.
 
 The code in this repository is proprietary and remains the intellectual property of the author.
 
-Prospective employers, recruiters, HR, and other applicable personnel may view, use, and redistribute the code solely for internal review and evaluation purposes as part of the hiring or assessment process.
+All artwork, assets, and other non-code content within this repository are also the intellectual property of the author. These assets may not be used without permission.
 
-This project is intended for demonstration purposes only. Unauthorized use or redistribution is prohibited.
+Prospective employers, recruiters, HR, and other applicable personnel may view, use, and redistribute the code and other content solely for review and evaluation purposes as part of the hiring or assessment process.
+
+This project is intended to be a demonstration. Unauthorized use or redistribution is prohibited.

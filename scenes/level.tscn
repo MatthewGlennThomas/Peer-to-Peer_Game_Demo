@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyphl0atbixj2"]
 
 [ext_resource type="Script" path="res://scripts/network.gd" id="1_kpbww"]
-[ext_resource type="Texture2D" uid="uid://3w1abki66s1k" path="res://assets/background_generic.png" id="2_jq6dr"]
+[ext_resource type="Texture2D" uid="uid://3w1abki66s1k" path="res://assets/BackgroundGeneric.png" id="2_jq6dr"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_kpbww")
@@ -19,12 +19,14 @@ offset_left = 714.0
 offset_top = 202.0
 offset_right = 1170.0
 offset_bottom = 290.0
+text = "Host"
 
 [node name="JoinButton" type="Button" parent="."]
 offset_left = 1408.0
 offset_top = 170.0
 offset_right = 1700.0
 offset_bottom = 288.0
+text = "Join"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player.tscn", "res://scenes/enemy.tscn")
